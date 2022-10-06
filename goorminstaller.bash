@@ -67,7 +67,7 @@ if (echo "$installsp" | grep -E -q "2"); then
     curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
     clear
     ngrok http 8080 > /dev/null 2>&1 &
-    python3 -m hikka --port 8080 > /dev/null 2>&1 &
+    python3 -m hikka --port 8080 --root &
     link=$(curl -s -N http://127.0.0.1:4040/status | grep -o "https://[0-9a-z]*\.ngrok.io")
     if (echo "$lang" | grep -E -q "1"); then
         echo "Follow this link to install hikka: " $link
