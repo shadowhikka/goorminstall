@@ -50,10 +50,6 @@ printf "\n |  | |  |  |/  \ |  |  |  |  _  ||     ||     ||   [_ |    \  "
 printf "\n |  | |  |  |\    |  |  |  |  |  ||     ||     ||     ||  .  \ "
 printf "\n|____||__|__| \___|  |__|  |__|__||_____||_____||_____||__|\_| "
 
-
-#installing hikka
-export GOORM="1" && apt update -y && apt upgrade -y && apt install python3.8 git wget -y && git clone https://github.com/hikariatama/Hikka && (wget -qO- https://bootstrap.pypa.io/get-pip.py | python3.8 -) && update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1 && update-alternatives --set python /usr/bin/python3.8 && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && update-alternatives --set python3 /usr/bin/python3.8 && update-alternatives --set python /usr/bin/python3.8 && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && update-alternatives --set python3 /usr/bin/python3.8 && alias python3=/usr/bin/python3 && alias python=/usr/bin/python3 && alias pip="python3.8 -m pip" && alias pip3="python3.8 -m pip" && cd Hikka && python3.8 -m pip install -r requirements.txt
-
 clear
 
 # start hikka for --no-web
@@ -64,14 +60,6 @@ fi
 
 
 if (echo "$installsp" | grep -E -q "2"); then
-    curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
     clear
-    ngrok http 8080 > /dev/null 2>&1 &
-    python3 -m hikka --port 8080 --root &
-    link=$(curl -s -N http://127.0.0.1:4040/status | grep -o "https://[0-9a-z]*\.ngrok.io")
-    if (echo "$lang" | grep -E -q "1"); then
-        echo "Follow this link to install hikka: " $link
-    else
-        echo "Перейдите по этой ссылке для установки хикки: " $link
-    fi
-fi
+    python3 -m hikka &
+    ngrok http 8080
