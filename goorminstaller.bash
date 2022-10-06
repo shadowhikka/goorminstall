@@ -68,7 +68,7 @@ if (echo "$installsp" | grep -E -q "2"); then
     clear
     ngrok http 8080 > /dev/null 2>&1 &
     python3 -m hikka --port 8080 > /dev/null 2>&1 &
-    link=$(curl -s -N http://127.0.0.1:8080/status | grep -o "https://[0-9a-z]*\.ngrok.io")
+    link=$(curl -s -N http://127.0.0.1:4040/status | grep -o "https://[0-9a-z]*\.ngrok.io")
     if (echo "$lang" | grep -E -q "1"); then
         echo "Follow this link to install hikka: " $link
     else
