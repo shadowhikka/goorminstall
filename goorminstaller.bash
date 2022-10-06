@@ -71,3 +71,5 @@ if (echo "$installsp" | grep -E -q "2"); then
         echo "Follow this link to install hikka: " $link
     else
         echo "Перейдите по этой ссылке для установки хикки: " $link
+    fi
+fi
