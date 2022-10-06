@@ -30,11 +30,12 @@ read lang
 
 #installation method
 if (echo "$lang" | grep -E -q "1"); then
-    echo -e "Installation methods:\n1. No web"
+    echo -e "Installation methods:\n1. No web\n2. Web"
     echo "Enter installation method:"
     read installsp
 else
-    echo -e "Введите способ установки:\n1. Без веб сайта"
+    echo -e "Введите способ установки:\n1. Без веб сайта\n2. С веб сайтом"
+    echo "Введите способ установки:"
     read installsp
 fi
 
